@@ -19,7 +19,7 @@ namespace OctoberStudio.UI
         [SerializeField] Image stageIcon;
         [SerializeField] Image lockImage;
         [SerializeField] TMP_Text stageLabel;
-        [SerializeField] TMP_Text stageNumberLabel;
+        public TMP_Text stageNumberLabel,LeaderBoardCounter;
 
         [Space]
         [SerializeField] Button PlayWagerButton,PlayFreeButton;

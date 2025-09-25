@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : Singleton<ScoreManager>
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] TMPro.TMP_InputField scoreInputField;

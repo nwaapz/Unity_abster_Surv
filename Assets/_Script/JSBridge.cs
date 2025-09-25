@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-
+using OctoberStudio.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +22,8 @@ public class JSBridge : MonoBehaviour
         yield return new WaitForSeconds(2);
         JsBridge_Send.Instance.AskAuthState();
         JsBridge_Send.Instance.RequestBalance();
+       
+        
     }
     // This method name must match what you send from React: "OnAuthChanged"
 
@@ -61,7 +63,7 @@ public class JSBridge : MonoBehaviour
         int seconds = (int)(totalSeconds % 60);
 
        // Debug.Log($"Time Left: {days}d {hours}h {minutes}m {seconds}s");
-        LeaderBoardManager.Instance.TimerText.text = $"{days}d {hours:D2}:{minutes:D2}:{seconds:D2}";
+        LobbyWindowBehavior.Instance.LeaderBoardCounter.text = $"{days}d {hours:D2}:{minutes:D2}:{seconds:D2}";
     }
 
     public void OnAddTwelveResult(string result)
@@ -76,19 +78,19 @@ public class JSBridge : MonoBehaviour
         if (status == "no")
         {
             //GetComponent<Login>().TryConnectWallet();
-            GetComponent<Login>().SetFooterFeedback("Wallet not connected. Trying to connect...");
-            GetComponent<Login>().WalletConnectionFailed();
+            Login.Instance.SetFooterFeedback("Wallet not connected. Trying to connect...");
+            Login.Instance.WalletConnectionFailed();
 
         }
         else
         {
-            GetComponent<Login>().walletAddress = status;
-            GetComponent<Login>().SetFooterFeedback(status);
+            Login.Instance.walletAddress = status;
+            Login.Instance.SetFooterFeedback(status);
             print("Wallet connected, now requesting profile data...");
-            GetComponent<Login>().GetProfileData();
-            GetComponent<Login>().setWalletState(true);
-            GetComponent<Login>().CheckPaymentStatus();
-            GetComponent<JsBridge_Send>().RequestBalance();
+            Login.Instance.GetProfileData();
+            Login.Instance.setWalletState(true);
+            Login.Instance.CheckPaymentStatus();
+            JsBridge_Send.Instance.RequestBalance();
         }
     }
 
@@ -104,20 +106,20 @@ public class JSBridge : MonoBehaviour
                 if (profile.Found)
                 {
                     // debugText.text = $"Profile found for {profile.Address}:\n{profile.Profile}";
-                    GetComponent<Login>().SetUserName(profile.Profile);
-                    GetComponent<Login>().setGameBanner("");
+                    Login.Instance.SetUserName(profile.Profile);
+                    Login.Instance.setGameBanner("");
                 }
                 else
                 {
                     //  debugText.text = $"No profile found for {profile.Address}.";
-                    GetComponent<Login>().ShowLogingPanel();
-                    GetComponent<Login>().SetUserName("Set Display Name");
+                    Login.Instance.ShowLogingPanel();
+                    Login.Instance.SetUserName("Set Display Name");
 
                 }
             }
             else
             {
-                GetComponent<Login>().SetFooterFeedback("Error retrieving profile.");
+                Login.Instance.SetFooterFeedback("Error retrieving profile.");
             }
         }
     }
@@ -132,11 +134,11 @@ public class JSBridge : MonoBehaviour
         {
             if (profile.Ok)
             {
-                GetComponent<Login>().SetUserName(profile.Profile);
+                Login.Instance.SetUserName(profile.Profile);
             }
         }
-        GetComponent<Login>().SetLoginState(result, false);
-        GetComponent<Login>().HideLogingPanel();
+        Login.Instance.SetLoginState(result, false);
+        Login.Instance.HideLogingPanel();
 
 
     }
@@ -177,7 +179,7 @@ public class JSBridge : MonoBehaviour
     {
         TransactionStatus status = JsonUtility.FromJson<TransactionStatus>(feedback);
 
-        GetComponent<JsBridge_Send>().RequestBalance();
+        JsBridge_Send.Instance.RequestBalance();
 
         print($"in unity recieving payment result{status.ok}");
         if (status.ok)
@@ -195,12 +197,12 @@ public class JSBridge : MonoBehaviour
 
     private void ShowPaymentUI()
     {
-        GetComponent<Login>().NotPaid();
+        Login.Instance.NotPaid();
     }
 
     private void EnableGameFeatures()
     {
-        GetComponent<Login>().HasPaid();
+        Login.Instance.HasPaid();
     }
 
     public void OnSubmitScore(string feedback)
@@ -209,12 +211,12 @@ public class JSBridge : MonoBehaviour
         TransactionStatus status = JsonUtility.FromJson<TransactionStatus>(feedback);
         if (status.ok)
         {
-            GetComponent<ScoreManager>().OnScoreSetConfirmation("Score submitted successfully!");
-            GetComponent<ScoreManager>().ShowScoreDisplay();
+            ScoreManager.Instance.OnScoreSetConfirmation("Score submitted successfully!");
+            ScoreManager.Instance.ShowScoreDisplay();
         }
         else
         {
-            GetComponent<ScoreManager>().OnScoreSetConfirmation("Failed to submit score: " + status.message);
+            ScoreManager.Instance.OnScoreSetConfirmation("Failed to submit score: " + status.message);
         }
     }
 
@@ -250,7 +252,7 @@ public class JSBridge : MonoBehaviour
         if (data.ok)
         {
             Debug.Log($"Balance update: {data.balance} ETH (address: {data.address})");
-            GetComponent<Login>().SetUserBalance(data.balance);
+            Login.Instance.SetUserBalance(data.balance);
         }
         else
         {

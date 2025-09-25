@@ -346,6 +346,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPersitent: 0
+--- !u!114 &200690657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149277510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d1c52995bb3e142a6ea79432e9ec3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPersitent: 0
+  leaderBoard: {fileID: 3160750791126507745}
+  LeaderBoardFeedBack: {fileID: 1567031691260496304}
 --- !u!224 &231661384 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 124512524327868960, guid: c1f9aa2f86287d844b243f7f28b22320,
@@ -1149,7 +1164,7 @@ GameObject:
   - component: {fileID: 1036273155}
   - component: {fileID: 1036273154}
   m_Layer: 5
-  m_Name: bridgeMe
+  m_Name: JSBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3169,6 +3184,11 @@ PrefabInstance:
       propertyPath: PlayWagerButton
       value: 
       objectReference: {fileID: 747485149951833034}
+    - target: {fileID: 3520493699062880296, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      propertyPath: LeaderBoardCounter
+      value: 
+      objectReference: {fileID: 1987322402427508539}
     - target: {fileID: 3992209832602297589, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3235,6 +3255,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 200690656}
+    - targetCorrespondingSourceObject: {fileID: 7079349279560309183, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 200690657}
   m_SourcePrefab: {fileID: 100100000, guid: 7dfbe892154909b41aea43c2840561fd, type: 3}
 --- !u!114 &747485149951833034 stripped
 MonoBehaviour:
@@ -3395,6 +3419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0762f1c9b5e87f14e89690951d251fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPersitent: 0
   scoreInputField: {fileID: 6046648834362490173}
   scoreDisplay: {fileID: 6499358382060066120}
   JsBridge: {fileID: 12529373732694512}
@@ -5179,9 +5204,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5362194614390389643}
+      - m_Target: {fileID: 200690657}
         m_TargetAssemblyTypeName: LeaderBoardManager, Assembly-CSharp
-        m_MethodName: TryGetLeaderBoard
+        m_MethodName: ShowLeaderBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5917,7 +5942,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5362194614390389643}
+        - m_Target: {fileID: 200690657}
           m_TargetAssemblyTypeName: LeaderBoardManager, Assembly-CSharp
           m_MethodName: CloseLeaderBoard
           m_Mode: 1
@@ -7164,22 +7189,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1f9aa2f86287d844b243f7f28b22320, type: 3}
---- !u!114 &5362194614390389643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569396226898617286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d1c52995bb3e142a6ea79432e9ec3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPersitent: 0
-  leaderBoard: {fileID: 3160750791126507745}
-  LeaderBoardFeedBack: {fileID: 1567031691260496304}
-  TimerText: {fileID: 1987322402427508539}
 --- !u!114 &5419042219348096054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7192,6 +7201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f1740cfc37222428054a374395485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPersitent: 0
   UsernameInput: {fileID: 2055383207814488911}
   LogintPanel: {fileID: 7039198865407745861}
   FeedBack: {fileID: 8052438339934739728}
@@ -8819,7 +8829,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4886141276590038149}
-  - component: {fileID: 5362194614390389643}
   m_Layer: 5
   m_Name: LeaderBoard
   m_TagString: Untagged

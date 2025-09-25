@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Login : MonoBehaviour
+public class Login : Singleton<Login>
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] TMPro.TMP_InputField UsernameInput;
@@ -139,7 +139,7 @@ public class Login : MonoBehaviour
 
     public void GetProfileData()
     {
-        GetComponent<JsBridge_Send>().GetProfileData();
+        JsBridge_Send.Instance.GetProfileData();
         userName.text = "fetching profile...";
     }
 
@@ -182,7 +182,7 @@ public class Login : MonoBehaviour
 
     public void CheckPaymentStatus()
     {
-        GetComponent<JsBridge_Send>().CheckPaimentStatus();
+       JsBridge_Send.Instance.CheckPaimentStatus();
     }
 
 

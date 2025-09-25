@@ -4,7 +4,7 @@ using UnityEngine;
 public class LeaderBoardManager : Singleton<LeaderBoardManager>
 {
     public  LeaderBoard leaderBoard;    
-    public  TextMeshProUGUI LeaderBoardFeedBack,TimerText;
+    public  TextMeshProUGUI LeaderBoardFeedBack;
     
     
     bool pending;    
