@@ -1,0 +1,10 @@
+penguin_idle -> Each frame has a duration of 100ms or 0.1s
+penguin_walk_new -> Each frame has a duration of 100ms or 0.1s
+penguin_revive -> Each frame has a duration of 70ms or 0.07s
+
+[INSTRUCTIONS FOR PENGUIN DEFEAT]
+
+Frames 1 to 3: Duration of 100ms each frame
+Frames 4 and 5: Duration of 600ms each frame (0.6s)
+
+Frames 4 and 5 must be repeated until the player revives.
