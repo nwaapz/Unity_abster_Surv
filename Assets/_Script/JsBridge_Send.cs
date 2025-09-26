@@ -1,3 +1,5 @@
+using OctoberStudio;
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -27,7 +29,30 @@ public class JsBridge_Send : Singleton<JsBridge_Send>
          #endif
     }
 
+    public void SendReplayData()
+    {
 
+        long unixMillis = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        var replayEvent = new ReplayEvent(unixMillis.ToString(),(int)ExperienceManager.Instance.XP);
+
+        PaymentSystem.Instance.AddRePlayEvent(replayEvent);
+        string data = JsonUtility.ToJson(PaymentSystem.Instance.replaySubmit);
+        print(data);
+        if (PaymentSystem.Instance.replaySubmit != null && PaymentSystem.Instance.WagerGamer)
+        {
+            
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    string escapedData = data.Replace("\\", "\\\\").Replace("\"", "\\\"");
+    string js = $"window.handleMessageFromUnity('SubmitReplay', \"{escapedData}\");";
+    Application.ExternalEval(js);
+#endif
+        }
+        else
+        {
+            print("submit replay null");
+        }
+    }
 
     public void AskAuthState()
     {

@@ -98,6 +98,7 @@ namespace OctoberStudio.Enemy
 
         private IEnumerator BurrowAttack()
         {
+            yield break;
             animator.SetBool(IS_BURROWED_BOOL, true);
 
             IsMoving = false;

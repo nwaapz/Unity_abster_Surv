@@ -317,6 +317,7 @@ namespace OctoberStudio
 
         protected virtual void OnEnemyDied(EnemyBehavior enemy)
         {
+            print("killed");
             enemy.onEnemyDied -= OnEnemyDied;
             enemiesInside.Remove(enemy);
         }
@@ -325,6 +326,7 @@ namespace OctoberStudio
 
         public virtual void TakeDamage(float damage)
         {
+           
             if (invincible || healthbar.IsZero) return;
 
             healthbar.Subtract(damage * DamageReductionMultiplier);

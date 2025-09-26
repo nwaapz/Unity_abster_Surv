@@ -308,6 +308,7 @@ namespace OctoberStudio
 
         protected virtual void Die(bool flash)
         {
+            
             enemyCollider.enabled = false;
 
             damageCoroutine.StopIfExists();

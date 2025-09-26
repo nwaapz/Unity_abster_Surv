@@ -333,19 +333,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 747485149951833033}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &200690656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149277510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea496a1d58baf64abfb9cd79ec8f143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPersitent: 0
 --- !u!114 &200690657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,8 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbd3c2ee889ebb4b8596ebb0e877ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveType: 1
-  clearSave: 0
+  saveType: 0
+  clearSave: 1
   autoSaveEnabled: 1
   autoSaveDelay: 30
 --- !u!1 &515345911
@@ -1182,6 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f69e77bb1d01346adab9ec75f5a402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPersitent: 1
 --- !u!224 &1036273155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1998,6 +1986,55 @@ Transform:
   - {fileID: 851393172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1853915373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853915375}
+  - component: {fileID: 1853915374}
+  m_Layer: 0
+  m_Name: paymentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1853915374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853915373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea496a1d58baf64abfb9cd79ec8f143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPersitent: 1
+  replaySubmit:
+    sessionId: 
+    userAddress: 
+    replay: []
+--- !u!4 &1853915375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853915373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1367.2705, y: -172.30293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127218214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e62163718c3bc44907cc6fd13eebae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPersitent: 0
+  IsPersitent: 1
 --- !u!4 &2127218216
 Transform:
   m_ObjectHideFlags: 0
@@ -3044,10 +3081,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 352788929066482072, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 816827548983803684, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
       propertyPath: m_Name
       value: Main Menu Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 916626590536908922, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 939537393383497307, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
@@ -3154,6 +3201,11 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 1665600871209472534, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1704966054921326491, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -3229,6 +3281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Wager Background
       objectReference: {fileID: 0}
+    - target: {fileID: 6715060153709263133, guid: 7dfbe892154909b41aea43c2840561fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7926672739281367523, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3251,10 +3308,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 138065580487256473}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7079349279560309183, guid: 7dfbe892154909b41aea43c2840561fd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 200690656}
     - targetCorrespondingSourceObject: {fileID: 7079349279560309183, guid: 7dfbe892154909b41aea43c2840561fd,
         type: 3}
       insertIndex: -1
@@ -10254,3 +10307,4 @@ SceneRoots:
   - {fileID: 8587675799520290988}
   - {fileID: 1036273155}
   - {fileID: 2127218216}
+  - {fileID: 1853915375}

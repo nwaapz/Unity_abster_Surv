@@ -53,6 +53,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -77,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 99b8ca14754b0e2408219312f56b2a45, type: 3}
+  m_Sprite: {fileID: -1619816890, guid: 509395f50e23db04489a424a23e9a0d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 0.4096, y: 0.8192}
+  m_Size: {x: 0.74, y: 0.8192}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -90,7 +93,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &1516049332240624104
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,6 +107,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -117,6 +121,7 @@ CapsuleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8214752804353027942}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -140,7 +145,8 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.27}
   m_Size: {x: 0.27, y: 0.43}
   m_Direction: 0
@@ -176,6 +182,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: vfx_earth_spike_dust
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.7828592
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.12904951
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.95988333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849899128293862153, guid: 9f9e697e4427a5f44904584415b415bc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.72169816
       objectReference: {fileID: 0}
     - target: {fileID: 4927950413868746771, guid: 9f9e697e4427a5f44904584415b415bc,
         type: 3}

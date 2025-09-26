@@ -1,14 +1,17 @@
 using OctoberStudio.Easing;
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace OctoberStudio
 {
-    public class ExperienceManager : MonoBehaviour
+    public class ExperienceManager : Singleton<ExperienceManager>
     {
         [SerializeField] ExperienceData experienceData;
         [SerializeField] ExperienceUI experienceUI;
+        [SerializeField] TextMeshProUGUI ScoreText;
 
         private static readonly int LEVEL_UP_HASH = "Level Up".GetHashCode();
 
@@ -19,9 +22,11 @@ namespace OctoberStudio
         public event UnityAction<int> onXpLevelChanged;
 
         StageSave stageSave;
+        ReplayEvent replayEvent;
 
         public void Init(PresetData testingPreset)
         {
+            
             stageSave = GameController.SaveManager.GetSave<StageSave>("Stage");
 
             XP = 0;
@@ -46,7 +51,12 @@ namespace OctoberStudio
 
         public void AddXP(float xp)
         {
+            
+            
+
             XP += xp * PlayerBehavior.Player.XPMultiplier;
+            ScoreText.text = XP.ToString();
+            print(XP);
             stageSave.XP = XP;
             if (XP >= TargetXP)
             {

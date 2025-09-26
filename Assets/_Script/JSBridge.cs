@@ -9,7 +9,7 @@ using UnityEngine.Scripting;
 
 
 
-public class JSBridge : MonoBehaviour
+public class JSBridge : Singleton<JSBridge> 
 {
     
     private void Start()
@@ -62,8 +62,12 @@ public class JSBridge : MonoBehaviour
         int minutes = (int)((totalSeconds % 3600) / 60);
         int seconds = (int)(totalSeconds % 60);
 
-       // Debug.Log($"Time Left: {days}d {hours}h {minutes}m {seconds}s");
-        LobbyWindowBehavior.Instance.LeaderBoardCounter.text = $"{days}d {hours:D2}:{minutes:D2}:{seconds:D2}";
+        // Debug.Log($"Time Left: {days}d {hours}h {minutes}m {seconds}s");
+        if (LobbyWindowBehavior.Instance != null)
+        {
+            LobbyWindowBehavior.Instance.LeaderBoardCounter.text = $"{days}d {hours:D2}:{minutes:D2}:{seconds:D2}";
+        }
+       
     }
 
     public void OnAddTwelveResult(string result)
@@ -270,14 +274,21 @@ public class JSBridge : MonoBehaviour
         StartSessionData data = JsonUtility.FromJson<StartSessionData>(jsonPayload);
 
         // Save sessionId for later (e.g., replay submission)
-        PlayerPrefs.SetString("sessionId", data.sessionId);
-        PlayerPrefs.Save();
+
+        if (data.sessionId != null)
+        {
+            LobbyWindowBehavior.Instance.LetInAfterSessionGenerated();
+            PlayerPrefs.SetString("sessionId", data.sessionId);
+            PlayerPrefs.Save();
+        }
+
+        
 
         print($"Session ID received: {data.sessionId}");
         // Optionally, you can use other session metadata if needed
     }
 
-
+    
 
     
     public void ONLB(string json)

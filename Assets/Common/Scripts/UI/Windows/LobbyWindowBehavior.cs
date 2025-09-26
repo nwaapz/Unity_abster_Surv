@@ -78,13 +78,13 @@ namespace OctoberStudio.UI
 
             if (save.IsPlaying && GameController.FirstTimeLoaded)
             {
-                continueBackgroundImage.gameObject.SetActive(true);
+               /// continueBackgroundImage.gameObject.SetActive(true);
 
-                contituePopupRect.gameObject.SetActive(true);
+               // contituePopupRect.gameObject.SetActive(true);
 
-                EventSystem.current.SetSelectedGameObject(confirmButton.gameObject);
+               //// EventSystem.current.SetSelectedGameObject(confirmButton.gameObject);
 
-                InitStage(save.SelectedStageId);
+                //InitStage(save.SelectedStageId);
             } else
             {
                 EventSystem.current.SetSelectedGameObject(PlayWagerButton.gameObject);
@@ -161,6 +161,11 @@ namespace OctoberStudio.UI
             save.XP = 0f;
             save.XPLEVEL = 0;
             PaymentSystem.Instance.LetIn();
+            
+        }
+
+        public void LetInAfterSessionGenerated()
+        {
             GameController.AudioManager.PlaySound(AudioManager.BUTTON_CLICK_HASH);
             GameController.LoadStage();
         }

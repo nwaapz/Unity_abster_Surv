@@ -127,6 +127,7 @@ namespace OctoberStudio
 
             gameScreen.Hide();
             stageFailedScreen.Show();
+            JsBridge_Send.Instance.SendReplayData();
         }
 
         public static void ResurrectPlayer()
