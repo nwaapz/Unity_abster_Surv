@@ -36,6 +36,8 @@ namespace OctoberStudio.UI
             EventSystem.current.SetSelectedGameObject(button.gameObject);
 
             GameController.InputManager.onInputChanged += OnInputChanged;
+
+            JsBridge_Send.Instance.SendReplayData();
         }
 
         public void Hide(UnityAction onFinish = null)

@@ -5259,7 +5259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 200690657}
         m_TargetAssemblyTypeName: LeaderBoardManager, Assembly-CSharp
-        m_MethodName: ShowLeaderBoard
+        m_MethodName: TryGetLeaderBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

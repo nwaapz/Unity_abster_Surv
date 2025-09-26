@@ -20,7 +20,7 @@ MonoBehaviour:
     fencePrefab: {fileID: 6967435664897069084, guid: c098a263fcd5d3a489ab7f38017bfce2,
       type: 3}
   - bossType: 3
-    displayName: MIGHTY CRAB
+    displayName: MIGHTY YETI
     bossPrefab: {fileID: 2150824473416715463, guid: e061174aa69bee94b99b2e2a798e4b79,
       type: 3}
     fencePrefab: {fileID: 6967435664897069084, guid: e5ba9edff5749654e9f9254d146aa062,

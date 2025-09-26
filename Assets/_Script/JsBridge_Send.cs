@@ -31,9 +31,9 @@ public class JsBridge_Send : Singleton<JsBridge_Send>
 
     public void SendReplayData()
     {
-
+        int time = (int)Time.time;   
         long unixMillis = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-        var replayEvent = new ReplayEvent(unixMillis.ToString(),(int)ExperienceManager.Instance.XP);
+        var replayEvent = new ReplayEvent(time.ToString(),(int)ExperienceManager.Instance.XP);
 
         PaymentSystem.Instance.AddRePlayEvent(replayEvent);
         string data = JsonUtility.ToJson(PaymentSystem.Instance.replaySubmit);

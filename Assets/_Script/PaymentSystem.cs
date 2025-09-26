@@ -18,9 +18,20 @@ public class PaymentSystem : Singleton<PaymentSystem>
 
    public void LetIn()
     {
-        replaySubmit = new ReplaySubmit(PlayerPrefs.GetString("sessionId"),Login.Instance.walletAddress);
+       
         WagerGamer = true; 
         JsBridge_Send.Instance.RequestStartSession();
+    }
+
+
+    public void NewGameStart(string sessionId)
+    {
+        if(Login.Instance != null && Login.Instance.walletAddress != null)
+        {
+            replaySubmit = new ReplaySubmit(sessionId, Login.Instance.walletAddress);
+            print($"session id recieved and set in unity   session id{sessionId}  and address is {Login.Instance.walletAddress}");
+        }
+        
     }
 
    public void NotIn()

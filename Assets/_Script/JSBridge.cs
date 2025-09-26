@@ -278,6 +278,7 @@ public class JSBridge : Singleton<JSBridge>
         if (data.sessionId != null)
         {
             LobbyWindowBehavior.Instance.LetInAfterSessionGenerated();
+            PaymentSystem.Instance.NewGameStart(data.sessionId);
             PlayerPrefs.SetString("sessionId", data.sessionId);
             PlayerPrefs.Save();
         }

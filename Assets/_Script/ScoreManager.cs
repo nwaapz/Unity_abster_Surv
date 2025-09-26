@@ -14,7 +14,7 @@ public class ScoreManager : Singleton<ScoreManager>
         if (int.TryParse(scoreInputField.text, out score))
         {
             print("Valid score input: " + score);   
-            JsBridge.GetComponent<JsBridge_Send>().SetScore(score.ToString());
+           // JsBridge.GetComponent<JsBridge_Send>().SetScore(score.ToString());
 
         }
         else
