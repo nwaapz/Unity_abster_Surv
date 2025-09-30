@@ -166,6 +166,7 @@ namespace OctoberStudio.UI
 
         public void LetInAfterSessionGenerated()
         {
+            
             GameController.AudioManager.PlaySound(AudioManager.BUTTON_CLICK_HASH);
             GameController.LoadStage();
         }
