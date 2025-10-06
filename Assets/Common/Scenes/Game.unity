@@ -539,6 +539,7 @@ MonoBehaviour:
   experienceData: {fileID: 11400000, guid: fffb86bb83bfc2140a50ff57366afd1f, type: 2}
   experienceUI: {fileID: 1508479206}
   ScoreText: {fileID: 1325432239}
+  Gem: 0
 --- !u!1 &680111813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1482,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0ff81b7d1041a044a99d1cc041130ec7,
         type: 3}
+    - target: {fileID: 2007232305940436617, guid: b6296675fe823014692c8950ebba4d7a,
+        type: 3}
+      propertyPath: m_Name
+      value: GemIcon
+      objectReference: {fileID: 0}
     - target: {fileID: 4141032451432871630, guid: b6296675fe823014692c8950ebba4d7a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1600,6 +1606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490679188120285315, guid: b6296675fe823014692c8950ebba4d7a,
+        type: 3}
+      propertyPath: m_Name
+      value: GemText
       objectReference: {fileID: 0}
     - target: {fileID: 4743674930974794757, guid: b6296675fe823014692c8950ebba4d7a,
         type: 3}

@@ -52,7 +52,7 @@ public class Login : Singleton<Login>
     public void TryConnectWallet()
     {
               // if (WalletConnected) return;
-        GetComponent<JsBridge_Send>().TryConnectToPrivyWallet();
+        JsBridge_Send.Instance.TryConnectToPrivyWallet();
         walletState.text = "connecting...";
     }
 
@@ -113,7 +113,7 @@ public class Login : Singleton<Login>
             return;
         }
         SetLoginState("Registering your name in...", true);
-        GetComponent<JsBridge_Send>().SetNewProfileName(username);
+        JsBridge_Send.Instance.SetNewProfileName(username);
     }
 
     public void LockPanel()
@@ -218,7 +218,7 @@ public class Login : Singleton<Login>
     public void Pay()
     {
         PaymentBtn.onClick.RemoveAllListeners();
-        GetComponent<JsBridge_Send>().TryPayForGame();
+        JsBridge_Send.Instance.TryPayForGame();
     }
 
 }

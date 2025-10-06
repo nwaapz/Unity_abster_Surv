@@ -17,7 +17,7 @@ namespace OctoberStudio.Drop
             var gold = amount * PlayerBehavior.Player.GoldMultiplier + leftoverDifference;
             var clampedGold = Mathf.FloorToInt(gold);
             leftoverDifference = gold - clampedGold;
-
+            if(PaymentSystem.Instance.WagerGamer)
             GameController.TempGold.Deposit(clampedGold);
         }
     }

@@ -14,7 +14,7 @@ namespace OctoberStudio
         [SerializeField] TextMeshProUGUI ScoreText;
 
         private static readonly int LEVEL_UP_HASH = "Level Up".GetHashCode();
-
+        public int Gem;
         public float XP { get; private set; }
         public float TargetXP { get; private set; }
         public int Level { get; private set; }
@@ -51,11 +51,12 @@ namespace OctoberStudio
 
         public void AddXP(float xp)
         {
-            
-            
 
-            XP += xp * PlayerBehavior.Player.XPMultiplier;
-            ScoreText.text = XP.ToString();
+            if (xp < 1 || !PaymentSystem.Instance.HasPaid || !PaymentSystem.Instance.WagerGamer) return;
+            print($"EX{xp}");
+            Gem++;
+            XP += xp ;
+            ScoreText.text = Gem.ToString();
             print(XP);
             stageSave.XP = XP;
             if (XP >= TargetXP)
