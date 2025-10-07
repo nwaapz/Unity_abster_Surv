@@ -15,13 +15,13 @@ namespace OctoberStudio.UI
 
         private void Awake()
         {
-            spacing = label.rectTransform.anchoredPosition.x - label.rectTransform.sizeDelta.x / 2 - icon.rectTransform.anchoredPosition.x - icon.rectTransform.sizeDelta.x / 2;
+           // spacing = label.rectTransform.anchoredPosition.x - label.rectTransform.sizeDelta.x / 2 - icon.rectTransform.anchoredPosition.x - icon.rectTransform.sizeDelta.x / 2;
         }
 
         public void SetAmount(int amount)
         {
             label.text = amount.ToString();
-            RecalculatePositions();
+          //  RecalculatePositions();
         }
 
         private void RecalculatePositions()

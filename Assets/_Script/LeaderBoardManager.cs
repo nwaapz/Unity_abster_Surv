@@ -35,14 +35,14 @@ public class LeaderBoardManager : Singleton<LeaderBoardManager>
 
         leaderBoard.LeaderBoarParent.gameObject.SetActive(true);
         leaderBoard.gameObject.SetActive(true);
-        print(leaderBoard.LeaderBoarParent.gameObject.activeInHierarchy +"is leaderboard active");
-        print(leaderBoard.gameObject.activeInHierarchy + "is container active");
+      //  print(leaderBoard.LeaderBoarParent.gameObject.activeInHierarchy +"is leaderboard active");
+       // print(leaderBoard.gameObject.activeInHierarchy + "is container active");
     }
 
 
     public void ResetLeaderBoardBtn()
     {
-        LeaderBoardFeedBack.text = "Leader Board";
+        LeaderBoardFeedBack.text = "";
         pending = false;
     }
 

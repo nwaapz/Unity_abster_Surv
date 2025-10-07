@@ -54,20 +54,25 @@ namespace OctoberStudio.UI
             confirmButton.onClick.AddListener(ConfirmButtonClicked);
             cancelButton.onClick.AddListener(CancelButtonClicked);
         }
-
+        [SerializeField] Image Lock;
         public void DisableWagerPlay()
         {
             print("disabeling wager play");
             lockImage.gameObject.SetActive(true);
             PlayWagerButton.interactable = false;
-            PlayWagerButton.image.sprite = playButtonDisabledSprite;
+            Lock.gameObject.SetActive(true);
+            // PlayWagerButton.image.color = Color.grey;
+            PlayWagerButton.onClick.RemoveAllListeners();
+            PlayWagerButton.onClick.AddListener(Login.Instance.TryConnectWallet);
         }
 
         public void EnableWagerPlay()
         {
               lockImage.gameObject.SetActive(false);
               PlayWagerButton.interactable = true;
-              PlayWagerButton.image.sprite = playButtonEnabledSprite;
+            PlayWagerButton.onClick.RemoveAllListeners();
+            PlayWagerButton.onClick.AddListener(OnPlayWagerButtonClicked);
+            Lock.gameObject.SetActive(false);
         }
 
         private void Start()
@@ -115,14 +120,18 @@ namespace OctoberStudio.UI
             {
                 lockImage.gameObject.SetActive(true);
                 PlayWagerButton.interactable = false;
-                PlayWagerButton.image.sprite = playButtonDisabledSprite;
+                Lock.gameObject.SetActive(true);
+                PlayWagerButton.onClick.RemoveAllListeners();
+                PlayWagerButton.onClick.AddListener(Login.Instance.TryConnectWallet);
             } else
             {
                 if(PaymentSystem.Instance.HasPaid)
                 {
                     lockImage.gameObject.SetActive(false);
                     PlayWagerButton.interactable = true;
-                    PlayWagerButton.image.sprite = playButtonEnabledSprite;
+                    PlayWagerButton.onClick.RemoveAllListeners();
+                    PlayWagerButton.onClick.AddListener(OnPlayWagerButtonClicked);
+                    Lock.gameObject.SetActive(false);
                 }
                
             }

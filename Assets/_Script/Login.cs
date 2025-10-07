@@ -6,8 +6,8 @@ public class Login : Singleton<Login>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] TMPro.TMP_InputField UsernameInput;
     [SerializeField] GameObject LogintPanel;
-    [SerializeField] TMPro.TextMeshProUGUI FeedBack,userName, walletState,footerFeedback, GamePlayBanner,PaymentState,UserBalance;
-    [SerializeField] Button PaymentBtn;
+    [SerializeField] TMPro.TextMeshProUGUI FeedBack,userName, walletState,footerFeedback, GamePlayBanner,UserBalance;
+   // [SerializeField] Button PaymentBtn;
     [SerializeField] ScoreManager scoreManager;
     public string walletAddress {get; set; } = "";
     public string ProfileName { get; set; } = "";
@@ -190,15 +190,15 @@ public class Login : Singleton<Login>
 
     public void HasPaid()
     {
-        PaymentState.text = "paid"; 
-        PaymentBtn.onClick.RemoveAllListeners();
+      //  PaymentState.text = "paid"; 
+     //   PaymentBtn.onClick.RemoveAllListeners();
         paid = true;
     }
 
     public void PaymentStarted()
     {
-        PaymentState.text = "processing";
-        PaymentBtn.onClick.RemoveAllListeners();
+     //   PaymentState.text = "processing";
+      //  PaymentBtn.onClick.RemoveAllListeners();
     }
 
     public void PaymentCanceled()
@@ -208,16 +208,16 @@ public class Login : Singleton<Login>
 
     public void NotPaid()
     {
-        PaymentState.text = "Pay";
-        PaymentBtn.onClick.RemoveAllListeners();
-        PaymentBtn.onClick.AddListener(Pay);  
+      //  PaymentState.text = "Pay";
+       // PaymentBtn.onClick.RemoveAllListeners();
+      //  PaymentBtn.onClick.AddListener(Pay);  
         paid = false;   
     }
 
 
     public void Pay()
     {
-        PaymentBtn.onClick.RemoveAllListeners();
+      //  PaymentBtn.onClick.RemoveAllListeners();
         JsBridge_Send.Instance.TryPayForGame();
     }
 
