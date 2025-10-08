@@ -6,22 +6,36 @@ public class Login : Singleton<Login>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] TMPro.TMP_InputField UsernameInput;
     [SerializeField] GameObject LogintPanel;
-    [SerializeField] TMPro.TextMeshProUGUI FeedBack,userName, walletState,footerFeedback, GamePlayBanner,UserBalance;
+    [SerializeField] TMPro.TextMeshProUGUI FeedBack,userName, walletState,footerFeedback, GamePlayBanner,UserBalance,TopUserName;
    // [SerializeField] Button PaymentBtn;
     [SerializeField] ScoreManager scoreManager;
     public string walletAddress {get; set; } = "";
     public string ProfileName { get; set; } = "";
-
+    string WalletTextHolder,BalanceTextHolder,ProfileTextHolder,footerTextHolder;
 
 
 
     bool WalletConnected = false;   
     bool IsProfileSet = false;
 
+    [SerializeField] GameObject ProfileWindow;
+    public void OpenProfile()
+    {
+        ProfileWindow.SetActive(!ProfileWindow.gameObject.activeInHierarchy);
+        walletState.text = WalletTextHolder;
+        UserBalance.text = BalanceTextHolder;
+        userName.text = ProfileTextHolder;
+        footerFeedback.text = footerTextHolder;
+    }
+
 
     public void SetUserBalance(string value)
     {
-        UserBalance.text = value;
+        if (ProfileWindow.activeInHierarchy)
+        {
+            UserBalance.text = value;
+        }
+        BalanceTextHolder = value;
     }
     public bool IsWalletConnected()
     {
@@ -34,13 +48,18 @@ public class Login : Singleton<Login>
         if (state)
         {
             GamePlayBanner.text = "";
-            walletState.text = "connected";
+            WalletTextHolder = "connected";
+           
         }
         else
         {
-            walletState.text = "not-set";
-            walletAddress = string.Empty;
+            WalletTextHolder = "You Are Not Connected";
+            footerTextHolder = string.Empty;
 
+        }
+        if (ProfileWindow.activeInHierarchy)
+        {
+            walletState.text = WalletTextHolder;
         }
     }
 
@@ -53,23 +72,37 @@ public class Login : Singleton<Login>
     {
               // if (WalletConnected) return;
         JsBridge_Send.Instance.TryConnectToPrivyWallet();
-        walletState.text = "connecting...";
+        WalletTextHolder = "connecting...";
+        if (ProfileWindow.activeInHierarchy)
+        {
+            walletState.text = WalletTextHolder;
+        }
     }
 
     public void WalletConnectionFailed()
     {
         WalletConnected = false;
-        walletState.text = "not-set";
+        WalletTextHolder = "You Are Not Connected";
         walletAddress= string.Empty;
         IsProfileSet = false;
         ProfileName = string.Empty;
-        userName.text = "not-set";
+        ProfileTextHolder = "You Are Not Connected";
+        if (ProfileWindow.activeInHierarchy)
+        {
+            walletState.text = WalletTextHolder;
+            userName.text = ProfileTextHolder;
+        }
     }
 
     public void SetFooterFeedback(string message)
     {
-        print("Footer feedback: " + message);   
-        footerFeedback.text = message;
+        print("Footer feedback: " + message);  
+        if(ProfileWindow.gameObject.activeInHierarchy)
+        {
+            footerFeedback.text = message;
+        }
+        footerTextHolder = message;
+        
     }   
 
     public void ShowLogingPanel()
@@ -90,15 +123,21 @@ public class Login : Singleton<Login>
 
     public void SetUserName(string  name)
     {
-        userName.text = name;
+        ProfileTextHolder = name;
         IsProfileSet = true;    
         ProfileName = name; 
+        TopUserName.text = name;
+        if (ProfileWindow.activeInHierarchy)
+        {
+            userName.text = ProfileTextHolder;  
+        }
     }
 
     bool Halt;
     public void Cancel()
     {
-        if(Halt) return;    
+        if(Halt) return;  
+        
         FeedBack.text = "";
         HideLogingPanel();  
     }
@@ -140,7 +179,12 @@ public class Login : Singleton<Login>
     public void GetProfileData()
     {
         JsBridge_Send.Instance.GetProfileData();
-        userName.text = "fetching profile...";
+        ProfileTextHolder = "fetching profile...";
+        if (ProfileWindow.activeInHierarchy)
+        {
+            userName.text = ProfileTextHolder;
+        }
+        
     }
 
     public void GameOpen()

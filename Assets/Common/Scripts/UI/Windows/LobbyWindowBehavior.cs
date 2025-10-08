@@ -59,11 +59,11 @@ namespace OctoberStudio.UI
         {
             print("disabeling wager play");
             lockImage.gameObject.SetActive(true);
-            PlayWagerButton.interactable = false;
+            //PlayWagerButton.interactable = false;
             Lock.gameObject.SetActive(true);
             // PlayWagerButton.image.color = Color.grey;
             PlayWagerButton.onClick.RemoveAllListeners();
-            PlayWagerButton.onClick.AddListener(Login.Instance.TryConnectWallet);
+            PlayWagerButton.onClick.AddListener(Login.Instance.Pay);
         }
 
         public void EnableWagerPlay()
@@ -119,10 +119,10 @@ namespace OctoberStudio.UI
             if(save.SelectedStageId > save.MaxReachedStageId )
             {
                 lockImage.gameObject.SetActive(true);
-                PlayWagerButton.interactable = false;
+                //PlayWagerButton.interactable = false;
                 Lock.gameObject.SetActive(true);
                 PlayWagerButton.onClick.RemoveAllListeners();
-                PlayWagerButton.onClick.AddListener(Login.Instance.TryConnectWallet);
+                PlayWagerButton.onClick.AddListener(Login.Instance.Pay);
             } else
             {
                 if(PaymentSystem.Instance.HasPaid)
